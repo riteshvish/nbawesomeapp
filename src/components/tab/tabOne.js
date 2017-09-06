@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image,TouchableOpacity } from "react-native";
-import { Container, Content, Card, CardItem, Text, View, Body,Grid,
+import { Container, Content, Card, CardItem, Text, View, Body,Grid,Button,Icon,
 Col } from 'native-base';
 import { StyleSheet, Platform, Dimensions } from "react-native";
 
@@ -11,20 +11,13 @@ import styles from './styles';
 const cardFour = require("../../../img/swiper-4.png");
 let url='https://dummyimage.com/'+(deviceWidth-35)+'x250/ccc/fff';
  class C_Cols extends Component {
-	 constructor(props) {
-		 super(props);
-		 this.state = {
-			 tab1: false,
-			 tab2: false,
-			 tab3: true
-		 };
-	 }
 	render(){
 		return(
 
 			<Col size={1} style={{ backgroundColor: "transparent" }} >
+
 				<TouchableOpacity style={{flex:1}}
-					  onPress={() => this.props.navigation.navigate("BasicTab")}
+					  onPress={() => this.props.navigation.navigate("BasicFooter")}
 					>
 				<Card style={{padding:4}}>
 					<Image style={{height:100}}
@@ -56,14 +49,7 @@ let url='https://dummyimage.com/'+(deviceWidth-35)+'x250/ccc/fff';
 }
 export default class TabOne extends Component {
 	// eslint-disable-line
-	constructor(props) {
-    super(props);
-    this.state = {
-      tab1: false,
-      tab2: false,
-      tab3: true
-    };
-  }
+
 	render() {
 		// eslint-disable-line
 		return (
@@ -117,9 +103,19 @@ export default class TabOne extends Component {
 				</Card>
 
 				<Grid style={{height:160}}>
-					<C_Cols navigate={this.props.navigation}/>
-					<C_Cols navigate={this.props.navigation}/>
-					<C_Cols navigate={this.props.navigation}/>
+					<C_Cols/>
+					<C_Cols/>
+					<C_Cols/>
+				</Grid>
+				<Grid style={{height:160}}>
+					<C_Cols/>
+					<C_Cols/>
+					<C_Cols/>
+				</Grid>
+				<Grid style={{height:160}}>
+					<C_Cols/>
+					<C_Cols/>
+					<C_Cols/>
 				</Grid>
 
 			</Content>
