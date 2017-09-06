@@ -12,15 +12,8 @@ import {
   Right,
   Body,
   List,
-  ListItem,
-  Tabs,
-  Tab,
-  Badge
+  ListItem
 } from "native-base";
-
-import TabOne from './tabOne';
-import TabTwo from './tabTwo';
-import TabThree from './tabThree';
 
 import styles from "./styles";
 
@@ -77,7 +70,7 @@ class NHTab extends Component {
     return (
       <Container style={styles.container}>
 
-        <Header noShadow hasTabs>
+        <Header noShadow>
           <Left>
             <Button
               transparent
@@ -87,33 +80,28 @@ class NHTab extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>My Store</Title>
+            <Title>Tabs</Title>
           </Body>
-          <Right>
-            <Button transparent><Icon name="search" /></Button>
-            <Button badge transparent>
-              <Icon name="cart" />
-              <Badge primary style={{marginLeft:-10,margin:0,padding:0}} >
-                  <Text style={{fontSize:10,margin:0,padding:0}}>20</Text>
-              </Badge>
-            </Button>
-          </Right>
+          <Right />
 
         </Header>
 
+        <Content>
+          <List
+            dataArray={datas}
+            renderRow={data =>
+              <ListItem
+                button
+                onPress={() => this.props.navigation.navigate(data.route)}
+              >
+                <Text>{data.text}</Text>
+                <Right>
+                  <Icon name="arrow-forward" style={{ color: "#999" }} />
+                </Right>
+              </ListItem>}
+          />
 
-          <Tabs>
-            <Tab heading="Tab1">
-              <TabOne navigate={this.props.navigation}/>
-            </Tab>
-            <Tab heading="Tab2">
-              <TabTwo navigate={this.props.navigation}/>
-            </Tab>
-            <Tab heading="Tab3">
-              <TabThree navigate={this.props.navigation}/>
-            </Tab>
-          </Tabs>
-
+        </Content>
 
       </Container>
     );

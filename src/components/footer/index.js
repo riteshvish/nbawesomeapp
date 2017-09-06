@@ -6,37 +6,77 @@ import {
   Title,
   Content,
   Button,
-  Icon,
+  Footer,
+  FooterTab,
   Text,
-  Left,
   Body,
+  Left,
   Right,
-  List,
-  ListItem
+  Icon,
+  Badge
 } from "native-base";
 
+import NHTab from "./../tab";
 import styles from "./styles";
 
-const datas = [
-  {
-    route: "BasicFooter",
-    text: "Basic Footer"
-  },
-  {
-    route: "IconFooter",
-    text: "Icon Footer"
-  },
-  {
-    route: "IconText",
-    text: "Icon & Text Footer"
-  },
-  {
-    route: "BadgeFooter",
-    text: "With Badge"
-  }
-];
-
 class NHFooter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tab1: true,
+      tab2: false,
+      tab3: false,
+      tab4: false
+    };
+  }
+
+  toggleTab1() {
+    this.setState({
+      tab1: true,
+      tab2: false,
+      tab3: false,
+      tab4: false
+    });
+  }
+
+  toggleTab2() {
+    this.setState({
+      tab1: false,
+      tab2: true,
+      tab3: false,
+      tab4: false
+    });
+  }
+
+  toggleTab3() {
+    this.setState({
+      tab1: false,
+      tab2: false,
+      tab3: true,
+      tab4: false
+    });
+  }
+
+  toggleTab4() {
+    this.setState({
+      tab1: false,
+      tab2: false,
+      tab3: false,
+      tab4: true
+    });
+  }
+  getCurrentTabs(){
+    if(this.state.tab1){
+      return (<Text>Apps</Text>);
+    }else if(this.state.tab2){
+      return (<Text>Camera</Text>);
+    }else if(this.state.tab3){
+      return (<Text>Compass</Text>);
+    }else if(this.state.tab4){
+      return (<Text>Contact</Text>);
+    }
+    return null;
+  }
   render() {
     return (
       <Container style={styles.container}>
@@ -50,26 +90,50 @@ class NHFooter extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Footer</Title>
+            <Title>App Name</Title>
           </Body>
           <Right />
         </Header>
 
-        <Content>
-          <List
-            dataArray={datas}
-            renderRow={data =>
-              <ListItem
-                button
-                onPress={() => this.props.navigation.navigate(data.route)}
-              >
-                <Text>{data.text}</Text>
-                <Right>
-                  <Icon name="arrow-forward" style={{ color: "#999" }} />
-                </Right>
-              </ListItem>}
-          />
+        <Content padder>
+          {this.getCurrentTabs()}
         </Content>
+
+
+        <Footer>
+          <FooterTab>
+            <Button
+              active={this.state.tab1}
+              onPress={() => this.toggleTab1()}
+              vertical
+              badge
+            >
+              <Badge><Text>2</Text></Badge>
+              <Icon active={this.state.tab1} name="apps" />
+              <Text>Apps</Text>
+            </Button>
+            <Button active={this.state.tab2} onPress={() => this.toggleTab2()}>
+              <Icon active={this.state.tab2} name="camera" />
+              <Text>Camera</Text>
+            </Button>
+            <Button
+              active={this.state.tab3}
+              onPress={() => this.toggleTab3()}
+              vertical
+              badge
+            >
+              <Badge style={{ backgroundColor: "green" }}>
+                <Text>51</Text>
+              </Badge>
+              <Icon active={this.state.tab3} name="compass" />
+              <Text>Compass</Text>
+            </Button>
+            <Button active={this.state.tab4} onPress={() => this.toggleTab4()}>
+              <Icon active={this.state.tab4} name="contact" />
+              <Text>Contact</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
       </Container>
     );
   }

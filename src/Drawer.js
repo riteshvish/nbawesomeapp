@@ -47,6 +47,7 @@ const DrawerExample = DrawerNavigator(
     NHCard: { screen: NHCard },
     NHCheckbox: { screen: NHCheckbox },
     NHDeckSwiper: { screen: NHDeckSwiper },
+    NHSplashPage: { screen: SplashPage },
     NHFab: { screen: NHFab },
     NHForm: { screen: NHForm },
     TextArea: { screen: TextArea },
@@ -70,7 +71,7 @@ const DrawerExample = DrawerNavigator(
     Actionsheet: { screen: Actionsheet }
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "NHTab",
     contentOptions: {
       activeTintColor: "#e91e63"
     },

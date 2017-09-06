@@ -19,7 +19,7 @@ import {
 } from "native-base";
 
 import styles from "./style";
-
+let url='https://yt3.ggpht.com/-ta-bz8wRDbE/AAAAAAAAAAI/AAAAAAAAAAA/M2hcPaj1cEU/s900-c-k-no-mo-rj-c0xffffff/photo.jpg';
 const drawerCover = require("../../../img/drawer-cover.png");
 
 const drawerImage = require("../../../img/logo-kitchen-sink.png");
@@ -198,7 +198,7 @@ class SideBar extends Component {
 			<Container>
 				<Content bounces={false} style={{ flex: 1, backgroundColor: "#fff", top: -1 }}>
 					<Image source={drawerCover} style={styles.drawerCover}>
-						<Image square style={styles.drawerImage} source={drawerImage} />
+						<Image square style={styles.drawerImage} source={{uri:url}} />
 					</Image>
 					<List
 						dataArray={datas}
