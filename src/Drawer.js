@@ -4,7 +4,7 @@ import React from "react";
 import { DrawerNavigator } from "react-navigation";
 
 import Home from "./components/home/";
-import NHTab from "./app/components/tab/";
+import NHTab from "./app/components";
 import SideBar from "./app/components/sidebar";
 
 const DrawerExample = DrawerNavigator(

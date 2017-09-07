@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Container, Content, Card, CardItem, Text, Body } from 'native-base';
+import { Container, Content, Card, CardItem, Text, Body,Button,Icon } from 'native-base';
 
 import styles from './styles';
 
@@ -13,6 +13,7 @@ export default class TabTwo extends Component {
 			<Content padder style={{ marginTop: 0 }}>
 				<Card style={{ flex: 0 }}>
 					<CardItem>
+					
 						<Body>
 							<Text>
 								NativeBase builds a layer on top of React Native that provides you with basic set of

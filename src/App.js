@@ -8,11 +8,11 @@ import { StackNavigator } from "react-navigation";
 
 import Drawer from "./Drawer";
 import NestedGrid from "./app/components/layout/nested";
-
+import ProductDetails from "./app/components/product/details";
 const AppNavigator = StackNavigator(
     {
         Drawer: { screen: Drawer },
-        NestedGrid: { screen: NestedGrid },
+        ProductDetails: { screen: ProductDetails }
     },
     {
         initialRouteName: "Drawer",

@@ -15,12 +15,13 @@ import {
   ListItem,
   Tabs,
   Tab,
-  Badge
+  Badge,
+  ScrollableTab
 } from "native-base";
 let self=null;
-import TabOne from './tabOne';
-import TabTwo from './tabTwo';
-import TabThree from './tabThree';
+import TabOne from './tab/tabOne';
+import TabTwo from './tab/tabTwo';
+import TabThree from './tab/tabThree';
 
 import styles from "./styles";
 
@@ -108,7 +109,7 @@ class NHTab extends Component {
 
         </Header>
 
-          <Tabs>
+          <Tabs  renderTabBar={() => <ScrollableTab />}>
             <Tab heading="Tab1">
               <TabOne openDetails={this.openDetails} navigation={this.props.navigation}/>
             </Tab>
@@ -116,6 +117,15 @@ class NHTab extends Component {
               <TabTwo navigate={this.props.navigation}/>
             </Tab>
             <Tab heading="Tab3">
+              <TabThree navigate={this.props.navigation}/>
+            </Tab>
+            <Tab heading="Tab4">
+              <TabThree navigate={this.props.navigation}/>
+            </Tab>
+            <Tab heading="Tab5">
+              <TabThree navigate={this.props.navigation}/>
+            </Tab>
+            <Tab heading="Tab6">
               <TabThree navigate={this.props.navigation}/>
             </Tab>
           </Tabs>

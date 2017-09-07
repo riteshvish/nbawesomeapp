@@ -25,7 +25,7 @@ export class C_Cols extends Component {
 				<TouchableOpacity style={{flex:1}}
 					  onPress={() =>{
 								// console.warn(this.props.navigation);
-								this.props.navigation.navigate("NestedGrid")
+								this.props.navigation.navigate("ProductDetails")
 							}
 						}
 					>
