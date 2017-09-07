@@ -4,14 +4,31 @@ import {
   Image,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
-
+import {
+  Container,
+  Header,
+  Title,
+  Content,
+  Text,
+  Button,
+  Icon,
+  Left,
+  Right,
+  Body,
+  List,
+  ListItem,
+  Tabs,
+  Tab,
+  Badge,
+  ScrollableTab
+} from "native-base";
 const HEADER_MAX_HEIGHT = 250;
 const HEADER_MIN_HEIGHT = 60;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
-var uri="https://cdn-images-1.medium.com/max/800/1*9OBTDUSE0XEgZLemVBFfxg.png"
+// var uri="https://cdn-images-1.medium.com/max/800/1*9OBTDUSE0XEgZLemVBFfxg.png"
+let uri='https://dummyimage.com/'+(375-35)+'x250/ccc/fff';
 export default class ProductDetails extends Component {
   constructor(props) {
     super(props);
@@ -44,6 +61,11 @@ export default class ProductDetails extends Component {
     outputRange: [1, 1, 0],
     extrapolate: 'clamp',
   });
+  const textOpacity = this.state.scrollY.interpolate({
+    inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
+    outputRange: [0, 0, 1],
+    extrapolate: 'clamp',
+  });
   const imageTranslate = this.state.scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE],
     outputRange: [0, -50],
@@ -62,18 +84,60 @@ export default class ProductDetails extends Component {
           {this._renderScrollViewContent()}
         </ScrollView>
       <Animated.View style={[styles.header, {height: headerHeight}]}>
-        <Animated.Image
+        <Animated.View
             style={[
               styles.backgroundImage,
               {opacity: imageOpacity, transform: [{translateY: imageTranslate}]},
             ]}
-            source={{uri:uri}}
-          />
+
+          >
+
+          <ScrollView pagingEnabled={true}  horizontal={true}>
+          <Image source={{uri:uri}} style={{flex:1,height:HEADER_MAX_HEIGHT,width:375}}>
+            <Text style={{backgroundColor:'transparent'}}>1</Text>
+          </Image>
+
+          <Image source={{uri:uri}} style={{flex:1,height:HEADER_MAX_HEIGHT,width:375}}>
+            <Text style={{backgroundColor:'transparent'}}>2</Text>
+          </Image>
+
+          <Image source={{uri:uri}} style={{flex:1,height:HEADER_MAX_HEIGHT,width:375}}>
+            <Text style={{backgroundColor:'transparent'}}>3</Text>
+          </Image>
+
+          </ScrollView>
+        </Animated.View>
 
 
-          <View style={styles.bar}>
 
-          </View>
+
+        <Header style={{backgroundColor:'transparent',flexDirection:'row'}} hasTabs>
+          <Left>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Animated.View
+              style={[
+                styles.backgroundImage,
+                {opacity: textOpacity},
+              ]}
+
+              >
+            <Title style={{marginTop:-10}}>Animated</Title>
+            </Animated.View>
+          </Body>
+          <Right style={{flexDirection:'row'}}>
+            <Button transparent><Icon name="search" /></Button>
+            <Button badge transparent>
+              <Icon name="cart" />
+              <Badge primary style={{marginLeft:-10,margin:0,padding:0}} >
+                  <Text style={{fontSize:10,margin:0,padding:0}}>20</Text>
+              </Badge>
+            </Button>
+          </Right>
+        </Header>
         </Animated.View>
       </View>
     );
@@ -96,14 +160,11 @@ const styles = StyleSheet.create({
   top: 0,
   left: 0,
   right: 0,
-  backgroundColor: '#784',
+  backgroundColor: '#fff',
   overflow: 'hidden',
 },
 bar: {
-  marginTop: 28,
   height: 32,
-  alignItems: 'center',
-  justifyContent: 'center',
 },
 title: {
   backgroundColor: 'transparent',
@@ -121,6 +182,6 @@ backgroundImage: {
   right: 0,
   width: null,
   height: HEADER_MAX_HEIGHT,
-  resizeMode: 'cover',
+
 },
 });
