@@ -9,7 +9,7 @@ const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 
 import styles from './styles';
-const cardFour = require("../../../img/swiper-4.png");
+const cardFour = require("../../../../img/swiper-4.png");
 let url='https://dummyimage.com/'+(deviceWidth-35)+'x250/ccc/fff';
 let self=null;
 export class C_Cols extends Component {
